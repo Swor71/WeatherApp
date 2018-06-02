@@ -1,0 +1,12 @@
+.search-area {
+  margin: 50px;
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.middle {
+  margin: 20px 0;
+}

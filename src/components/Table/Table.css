@@ -2,7 +2,7 @@
     text-align: center;
 }
 
-table, th, td {
+th, td {
     border: 1px solid black;
     border-collapse: collapse;
 }
@@ -12,17 +12,12 @@ td {
     padding: 5px;
 }
 
-.table-thing {
-    margin-top: 30px;
-}
-
-.pic {
-    vertical-align: middle;
-    width: 32px;
-    height: 32px;
-}
-
 .table {
+    display: flex;
+    flex-wrap: wrap;
     max-height: 300px;
-    overflow: scroll;
+}
+
+.table-wrapper {
+    
 }

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import './App.css';
-import WeatherInfo from './components/WeatherInfo';
 import axios from 'axios';
+import './App.css';
+
+import Search from "./components/Search/Search";
+import Table from "./components/Table/Table";
+
 
 class App extends Component {
 	constructor(props) {
@@ -44,14 +47,14 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<div className='search-area'>
-					<input onChange={(e) => this.changeHandler(e)} />
-					<button className='middle' onClick={() => this.getData()}>GET DATA!</button>
-					<button onClick={() => this.toConsole()}>Show data</button>
-				</div>
-				<WeatherInfo city={this.state.city} list={this.state.list}/>
+				<Search 
+					changeHandler={e => this.changeHandler(e)} 
+					onClickData={() => this.getData()} 
+					onClickConsole={() => this.toConsole()} 
+				/>
+				<Table city={this.state.city} list={this.state.list} />
 			</div>
-		);
+		)
 	}
 }
 
