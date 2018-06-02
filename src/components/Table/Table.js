@@ -14,7 +14,9 @@ const Table = (props) => {
 
   let todayWeather = arrCpy.filter(item => item.dt_txt.match(todayDate));
 
-  const tomorrowWeather = arrCpy.filter(item => item.dt_txt.match('2018-06-03'));;
+  const tomorrowWeather = arrCpy.filter(item => item.dt_txt.match('2018-06-03'));
+
+  const dayAfterTomorrowWeather = arrCpy.filter(item => item.dt_txt.match('2018-06-04'));
   
   // let date = arrCpy.map(item => item.dt_txt.split(' ').shift());
 
@@ -32,6 +34,7 @@ const Table = (props) => {
       <table className="table">
         <TableContent list={todayWeather} />
         <TableContent list={tomorrowWeather} />
+        <TableContent list={dayAfterTomorrowWeather} />
       </table>
     </div>  
   )

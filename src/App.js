@@ -17,11 +17,11 @@ class App extends Component {
 	}
 
 	changeHandler(e) {
-		this.setState({city : e.target.value});
+		this.setState({search : e.target.value});
 	}
 
 	async getData() {
-		const search = this.state.city;
+		const search = this.state.search;
 
 		const APIKEY = `073cac7813564ec8027c23f467c3a8ac`;
 		const URL = `http://api.openweathermap.org/data/2.5/forecast?q=${search}&units=metric&APPID=${APIKEY}`;
