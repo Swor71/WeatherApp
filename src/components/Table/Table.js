@@ -14,11 +14,20 @@ const Table = (props) => {
 
   let todayWeather = arrCpy.filter(item => item.dt_txt.match(todayDate));
 
-  const tomorrowWeather = arrCpy.filter(item => item.dt_txt.match('2018-06-03'));
-
-  const dayAfterTomorrowWeather = arrCpy.filter(item => item.dt_txt.match('2018-06-04'));
+  // const tomorrowWeather = arrCpy.filter(item => item.dt_txt.match('2018-06-03'));
   
-  // let date = arrCpy.map(item => item.dt_txt.split(' ').shift());
+  // let grouped = arrCpy.map(item => (
+  //   item.dt_txt == item.dt_txt.match(/^2018-06-02.*$/)
+  // ))
+
+  let tomorrowWeather = _.remove(arrCpy, function(n) {
+    return n.dt_txt == n.dt_txt.match(/^2018-06-03.*$/);
+  });
+  
+  console.log(tomorrowWeather);
+  
+  // let date = arrCpy.filter(item => item.dt_txt.split(' ').shift());
+  // n.dt_txt === //
 
   // console.log(date);
   
@@ -34,7 +43,6 @@ const Table = (props) => {
       <table className="table">
         <TableContent list={todayWeather} />
         <TableContent list={tomorrowWeather} />
-        <TableContent list={dayAfterTomorrowWeather} />
       </table>
     </div>  
   )
