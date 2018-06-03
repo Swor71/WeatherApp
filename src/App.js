@@ -51,7 +51,7 @@ class App extends Component {
 					onClickData={() => this.getData()} 
 					onClickConsole={() => this.toConsole()} 
 				/>
-				<TableWrapper city={this.state.city} list={this.state.list} />
+				{this.state.list != '' && this.state.city != '' ? <TableWrapper city={this.state.city} list={this.state.list} /> : null}
 			</div>
 		)
 	}

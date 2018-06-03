@@ -26,7 +26,7 @@ const TableWrapper = (props) => {
     <div>
       <h1 className='place'>{props.city.name ? `Weather in ${props.city.name}, ${props.city.country}:` : null}</h1>
       <div className="table-wrapper">
-        <TableContent list={todayWeather} />
+        {todayWeather ? <TableContent list={todayWeather} /> : null}
         {dayOne ? <TableContent list={dayOne} /> : null}
         {dayTwo ? <TableContent list={dayTwo} /> : null}
         {dayThree ? <TableContent list={dayThree} /> : null}
