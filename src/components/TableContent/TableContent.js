@@ -1,7 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import _ from "lodash";
 
 const TableContent = (props) => {
+
     return (
         <tbody>
             {
@@ -13,9 +16,13 @@ const TableContent = (props) => {
                         <td>{_.round(item.main.temp, 1)} &#8451;</td>
                     </tr>
                 ))
-            }
+            } 
         </tbody>
     )
 }
+
+TableContent.propTypes = {
+    list: PropTypes.array,
+};
 
 export default TableContent;

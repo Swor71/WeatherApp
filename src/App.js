@@ -32,7 +32,6 @@ class App extends Component {
 				list: resp.data.list,
 				city: resp.data.city,
 			});
-			// console.log(resp);
 			
 		} catch (error) {
 			console.error(error);
