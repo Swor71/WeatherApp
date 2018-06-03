@@ -1,0 +1,10 @@
+.place {
+    text-align: center;
+}
+
+.table-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    border-collapse: collapse;
+    justify-content: center;
+}

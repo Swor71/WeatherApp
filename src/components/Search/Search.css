@@ -1,10 +1,14 @@
 .search-area {
-  margin: 50px;
+  margin: 50px auto;
   display: flex;
-  width: 50%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+input {
+  text-align: center;
 }
 
 .middle {

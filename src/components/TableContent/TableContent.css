@@ -1,5 +1,18 @@
+.table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: 5px;
+}
+
 .pic {
     vertical-align: middle;
     width: 42px;
     height: 42px;
+}
+
+td {
+    min-width: 130px;
+    padding: 5px;
+    border: 1px solid black;
+    text-align: center;
 }

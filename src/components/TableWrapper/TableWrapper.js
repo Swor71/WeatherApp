@@ -1,10 +1,10 @@
 import React from 'react';
-import './Table.css';
+import './TableWrapper.css';
 import _ from "lodash";
 
 import TableContent from "../TableContent/TableContent";
 
-const Table = (props) => {
+const TableWrapper = (props) => {
 
   let arrCpy = props.list.slice();
 
@@ -23,18 +23,18 @@ const Table = (props) => {
   let dayFive = otherDaysChunked.shift();
 
   return (
-    <div className="table-wrapper">
-      <h2>{props.city.name ? `Weather in ${props.city.name}, ${props.city.country}:` : null}</h2>
-      <table className="table">
+    <div>
+      <h1 className='place'>{props.city.name ? `Weather in ${props.city.name}, ${props.city.country}:` : null}</h1>
+      <div className="table-wrapper">
         <TableContent list={todayWeather} />
         {dayOne ? <TableContent list={dayOne} /> : null}
         {dayTwo ? <TableContent list={dayTwo} /> : null}
         {dayThree ? <TableContent list={dayThree} /> : null}
         {dayFour ? <TableContent list={dayFour} /> : null}
         {dayFive ? <TableContent list={dayFive} /> : null}
-      </table>
+      </div>
     </div>  
   )
 }
 
-export default Table;
+export default TableWrapper;

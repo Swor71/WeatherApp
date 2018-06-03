@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 
 import Search from "./components/Search/Search";
-import Table from "./components/Table/Table";
+import TableWrapper from "./components/TableWrapper/TableWrapper";
 
 
 class App extends Component {
@@ -51,7 +51,7 @@ class App extends Component {
 					onClickData={() => this.getData()} 
 					onClickConsole={() => this.toConsole()} 
 				/>
-				<Table city={this.state.city} list={this.state.list} />
+				<TableWrapper city={this.state.city} list={this.state.list} />
 			</div>
 		)
 	}
