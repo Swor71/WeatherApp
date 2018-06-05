@@ -3,6 +3,7 @@ import './TableWrapper.css';
 import _ from "lodash";
 
 import TableContent from "../TableContent/TableContent";
+import TodayWeather from '../TodayWeather/TodayWeather';
 
 const TableWrapper = (props) => {
 
@@ -16,7 +17,7 @@ const TableWrapper = (props) => {
 
   let otherDaysChunked = _.chunk(otherDays, 8);
 
-  let dayOne = otherDaysChunked.shift();
+  // let dayOne = otherDaysChunked.shift();
   // let dayTwo = otherDaysChunked.shift();
   // let dayThree = otherDaysChunked.shift();
   // let dayFour = otherDaysChunked.shift();
@@ -26,9 +27,9 @@ const TableWrapper = (props) => {
     <div className='container'>
       <h1 className='place'>{props.city.name ? `Weather in ${props.city.name}, ${props.city.country}:` : null}</h1>
       <div className="table-wrapper">
-        {/* {todayWeather ? <TableContent list={todayWeather} /> : null} */}
-        {dayOne ? <TableContent list={dayOne} /> : null}
-        {/* {dayTwo ? <TableContent list={dayTwo} /> : null}
+        {todayWeather ? <TodayWeather list={todayWeather} /> : null}
+        {/* {dayOne ? <TableContent list={dayOne} /> : null}
+        {dayTwo ? <TableContent list={dayTwo} /> : null}
         {dayThree ? <TableContent list={dayThree} /> : null}
         {dayFour ? <TableContent list={dayFour} /> : null}
         {dayFive ? <TableContent list={dayFive} /> : null} */}
