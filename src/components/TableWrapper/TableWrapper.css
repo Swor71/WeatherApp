@@ -1,16 +1,16 @@
 .place {
-    text-align: center;
+  text-align: center;
 }
 
 .table-wrapper {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    border-collapse: collapse;
-    justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  border-collapse: collapse;
+  justify-content: center;
 }
 
 .container {
-    margin: 0 auto;
+  margin: 0 auto;
 }
