@@ -19,7 +19,7 @@ class App extends Component {
     this.setState({ search: e.target.value });
   }
 
-  async getData(e) {
+  async getData() {
     const search = this.state.search;
 
     const APIKEY = `073cac7813564ec8027c23f467c3a8ac`;
