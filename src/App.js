@@ -16,7 +16,9 @@ class App extends Component {
   }
 
   changeHandler(e) {
-    this.setState({ search: e.target.value });
+    const val = e.target.value;
+
+    this.setState({ search: val });
   }
 
   async getData() {

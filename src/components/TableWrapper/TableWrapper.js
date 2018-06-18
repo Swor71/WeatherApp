@@ -2,40 +2,94 @@ import React from "react";
 import "./TableWrapper.css";
 import _ from "lodash";
 
-import TableContent from "../TableContent/TableContent";
 import TodayWeather from "../TodayWeather/TodayWeather";
+import WeatherCard from "../WeatherCard/WeatherCard";
 
 const TableWrapper = props => {
   let arrCpy = props.list.slice();
 
-  const todayDate = new Date().toISOString().slice(0, 10);
+  const todayDate = new Date();
+  const todayDateShort = todayDate.toISOString().slice(0, 10);
 
-  let todayWeather = arrCpy.filter(item => item.dt_txt.match(todayDate));
+  let todayWeather = arrCpy.filter(item => item.dt_txt.match(todayDateShort));
 
-  let otherDays = arrCpy.filter(item => !item.dt_txt.match(todayDate));
-
+  let otherDays = arrCpy.filter(item => !item.dt_txt.match(todayDateShort));
   let otherDaysChunked = _.chunk(otherDays, 8);
 
-  // let dayOne = otherDaysChunked.shift();
-  // let dayTwo = otherDaysChunked.shift();
-  // let dayThree = otherDaysChunked.shift();
-  // let dayFour = otherDaysChunked.shift();
-  // let dayFive = otherDaysChunked.shift();
+  let dayOne = otherDaysChunked.shift();
+  let dayTwo = otherDaysChunked.shift();
+  let dayThree = otherDaysChunked.shift();
+  let dayFour = otherDaysChunked.shift();
+  let dayFive = otherDaysChunked.shift();
+
+  //Additional days for a simple answer to a problem of starting on day 6
+  const daysArr = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday"
+  ];
+
+  const weekday = todayDate.getDay();
 
   return (
     <div className="container">
-      <h1 className="place">
-        {props.city.name
-          ? `Weather in ${props.city.name}, ${props.city.country}:`
-          : null}
-      </h1>
+      <h1 className="place">{`${
+        props.city.name
+          ? `5-Day Weather Forecast For ${props.city.name}, ${
+              props.city.country
+            }:`
+          : null
+      }`}</h1>
       <div className="table-wrapper">
-        {todayWeather ? <TodayWeather list={todayWeather} /> : null}
-        {/* {dayOne ? <TableContent list={dayOne} /> : null}
-        {dayTwo ? <TableContent list={dayTwo} /> : null}
-        {dayThree ? <TableContent list={dayThree} /> : null}
-        {dayFour ? <TableContent list={dayFour} /> : null}
-        {dayFive ? <TableContent list={dayFive} /> : null} */}
+        {/* {todayWeather ? <TodayWeather list={todayWeather} /> : null} */}
+        {dayOne ? (
+          <WeatherCard
+            list={dayOne}
+            city={props.city}
+            weekday={daysArr[weekday + 1]}
+          />
+        ) : null}
+
+        {dayTwo ? (
+          <WeatherCard
+            list={dayTwo}
+            city={props.city}
+            weekday={daysArr[weekday + 2]}
+          />
+        ) : null}
+
+        {dayThree ? (
+          <WeatherCard
+            list={dayThree}
+            city={props.city}
+            weekday={daysArr[weekday + 3]}
+          />
+        ) : null}
+
+        {dayFour ? (
+          <WeatherCard
+            list={dayFour}
+            city={props.city}
+            weekday={daysArr[weekday + 4]}
+          />
+        ) : null}
+
+        {dayFive ? (
+          <WeatherCard
+            list={dayFive}
+            city={props.city}
+            weekday={daysArr[weekday + 5]}
+          />
+        ) : null}
       </div>
     </div>
   );
