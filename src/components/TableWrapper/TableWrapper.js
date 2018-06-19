@@ -44,13 +44,20 @@ const TableWrapper = props => {
     <div className="container">
       <h1 className="place">{`${
         props.city.name
-          ? `5-Day Weather Forecast For ${props.city.name}, ${
+          ? `5-Day Weather Forecast for ${props.city.name}, ${
               props.city.country
             }:`
           : null
       }`}</h1>
       <div className="table-wrapper">
-        {/* {todayWeather ? <TodayWeather list={todayWeather} /> : null} */}
+        {todayWeather ? (
+          <TodayWeather
+            list={todayWeather}
+            city={props.city}
+            weekday={daysArr[weekday]}
+          />
+        ) : null}
+
         {dayOne ? (
           <WeatherCard
             list={dayOne}

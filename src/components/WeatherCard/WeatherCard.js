@@ -8,7 +8,6 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import CardMedia from "@material-ui/core/CardMedia";
 import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -74,10 +73,17 @@ class WeatherCard extends React.Component {
             }.png`}
           />
           <CardContent>
-            <Typography
-              align="center"
-              variant="title"
-            >{`${minTemp} / ${maxTemp}`}</Typography>
+            <Typography align="center" variant="title">
+              {`${minTemp} / ${maxTemp}`} &#8451;
+            </Typography>
+          </CardContent>
+          <CardContent>
+            <Typography align="center" variant="body2">{`Wind - ${
+              this.props.list[5].wind.speed
+            } m/s`}</Typography>
+            <Typography align="center" variant="body2">{`Pressure - ${
+              this.props.list[5].main.pressure
+            } hPa`}</Typography>
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
             <IconButton

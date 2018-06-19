@@ -4,6 +4,7 @@ import "./App.css";
 
 import Search from "./components/Search/Search";
 import TableWrapper from "./components/TableWrapper/TableWrapper";
+import AppBar from "./components/AppBar/AppBar";
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +22,8 @@ class App extends Component {
     this.setState({ search: val });
   }
 
-  async getData() {
+  async getData(e) {
+    e.preventDefault();
     const search = this.state.search;
 
     const APIKEY = `073cac7813564ec8027c23f467c3a8ac`;
@@ -46,9 +48,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <AppBar />
         <Search
           changeHandler={e => this.changeHandler(e)}
-          onClickData={() => this.getData()}
+          onClickData={e => this.getData(e)}
           onClickConsole={() => this.toConsole()}
         />
         {this.state.list != "" && this.state.city != "" ? (
