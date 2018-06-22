@@ -4,7 +4,8 @@ import "./App.css";
 
 import Search from "./components/Search/Search";
 import TableWrapper from "./components/TableWrapper/TableWrapper";
-import AppBar from "./components/AppBar/AppBar";
+import AppBarTop from "./components/AppBarTop/AppBarTop";
+import MenuDrawer from "./components/AppBarTop/MenuDrawer/MenuDrawer";
 
 class App extends Component {
   constructor(props) {
@@ -12,13 +13,19 @@ class App extends Component {
     this.state = {
       search: "",
       city: [],
-      list: []
+      list: [],
+      opened: false
     };
+  }
+
+  toggleDrawer() {
+    this.setState({
+      opened: !this.state.opened
+    });
   }
 
   changeHandler(e) {
     const val = e.target.value;
-
     this.setState({ search: val });
   }
 
@@ -40,19 +47,17 @@ class App extends Component {
     }
   }
 
-  toConsole() {
-    console.log(this.state.city);
-    console.log(this.state.list);
-  }
-
   render() {
     return (
       <div className="App">
-        <AppBar />
+        <AppBarTop toggleDrawer={() => this.toggleDrawer()} />
+        <MenuDrawer
+          toggleDrawer={() => this.toggleDrawer()}
+          opened={this.state.opened}
+        />
         <Search
           changeHandler={e => this.changeHandler(e)}
           onClickData={e => this.getData(e)}
-          onClickConsole={() => this.toConsole()}
         />
         {this.state.list != "" && this.state.city != "" ? (
           <TableWrapper city={this.state.city} list={this.state.list} />

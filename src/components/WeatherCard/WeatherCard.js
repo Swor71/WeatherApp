@@ -69,7 +69,7 @@ class WeatherCard extends React.Component {
           <CardMedia
             className={classes.media}
             image={`http://openweathermap.org/img/w/${
-              this.props.list[5].weather[0].icon
+              this.props.list[0].weather[0].icon
             }.png`}
           />
           <CardContent>
@@ -79,10 +79,10 @@ class WeatherCard extends React.Component {
           </CardContent>
           <CardContent>
             <Typography align="center" variant="body2">{`Wind - ${
-              this.props.list[5].wind.speed
+              this.props.list[0].wind.speed
             } m/s`}</Typography>
             <Typography align="center" variant="body2">{`Pressure - ${
-              this.props.list[5].main.pressure
+              this.props.list[0].main.pressure
             } hPa`}</Typography>
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>

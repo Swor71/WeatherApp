@@ -17,7 +17,7 @@ const styles = {
   }
 };
 
-function ButtonAppBar(props) {
+const AppBarTop = props => {
   const { classes } = props;
   return (
     <div className={classes.root}>
@@ -27,6 +27,7 @@ function ButtonAppBar(props) {
             className={classes.menuButton}
             color="inherit"
             aria-label="Menu"
+            onClick={props.toggleDrawer}
           >
             <MenuIcon />
           </IconButton>
@@ -37,10 +38,10 @@ function ButtonAppBar(props) {
       </AppBar>
     </div>
   );
-}
+};
 
-ButtonAppBar.propTypes = {
+AppBarTop.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(ButtonAppBar);
+export default withStyles(styles)(AppBarTop);

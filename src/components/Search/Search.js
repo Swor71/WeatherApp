@@ -8,8 +8,7 @@ import SearchButton from "./SearchButton/SearchButton";
 const styles = theme => ({
   container: {
     display: "block",
-    margin: "0 auto",
-    textAlign: "center"
+    margin: "0 auto"
   },
   textField: {
     marginLeft: theme.spacing.unit,

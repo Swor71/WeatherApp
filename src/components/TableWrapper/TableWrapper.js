@@ -22,7 +22,7 @@ const TableWrapper = props => {
   let dayFour = otherDaysChunked.shift();
   let dayFive = otherDaysChunked.shift();
 
-  //Additional days for a simple answer to a problem of starting on day 6
+  //Additional days as a simple workaroud to the problem of starting on day 6
   const daysArr = [
     "Sunday",
     "Monday",
@@ -50,13 +50,13 @@ const TableWrapper = props => {
           : null
       }`}</h1>
       <div className="table-wrapper">
-        {todayWeather ? (
+        {/* {todayWeather ? (
           <TodayWeather
             list={todayWeather}
             city={props.city}
             weekday={daysArr[weekday]}
           />
-        ) : null}
+        ) : null} */}
 
         {dayOne ? (
           <WeatherCard
