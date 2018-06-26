@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./App.css";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import Search from "./components/Search/Search";
-import TableWrapper from "./components/TableWrapper/TableWrapper";
+import FiveDayForecast from "./components/FiveDayForecast/FiveDayForecast";
 import AppBarTop from "./components/AppBarTop/AppBarTop";
-import MenuDrawer from "./components/AppBarTop/MenuDrawer/MenuDrawer";
+import DrawerMenu from "./components/AppBarTop/DrawerMenu/DrawerMenu";
+import Welcome from "./components/Welcome/Welcome";
 
 class App extends Component {
   constructor(props) {
@@ -18,16 +20,16 @@ class App extends Component {
     };
   }
 
-  toggleDrawer() {
+  toggleDrawer = () => {
     this.setState({
       opened: !this.state.opened
     });
-  }
+  };
 
-  changeHandler(e) {
+  changeHandler = e => {
     const val = e.target.value;
     this.setState({ search: val });
-  }
+  };
 
   async getData(e) {
     e.preventDefault();
@@ -49,20 +51,32 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <AppBarTop toggleDrawer={() => this.toggleDrawer()} />
-        <MenuDrawer
-          toggleDrawer={() => this.toggleDrawer()}
-          opened={this.state.opened}
-        />
-        <Search
-          changeHandler={e => this.changeHandler(e)}
-          onClickData={e => this.getData(e)}
-        />
-        {this.state.list != "" && this.state.city != "" ? (
-          <TableWrapper city={this.state.city} list={this.state.list} />
-        ) : null}
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <AppBarTop toggleDrawer={this.toggleDrawer} />
+          <DrawerMenu
+            toggleDrawer={this.toggleDrawer}
+            opened={this.state.opened}
+          />
+          <Search
+            changeHandler={this.changeHandler}
+            onClickData={e => this.getData(e)}
+          />
+
+          <Route exact path="/" component={Welcome} />
+          <Route
+            path="/fiveDayWeather"
+            render={() =>
+              this.state.list != "" && this.state.city != "" ? (
+                <FiveDayForecast
+                  city={this.state.city}
+                  list={this.state.list}
+                />
+              ) : null
+            }
+          />
+        </div>
+      </BrowserRouter>
     );
   }
 }

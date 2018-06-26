@@ -59,6 +59,23 @@ class TodayWeather extends React.Component {
     let maxTemp = _.round(_.max(temp), 1);
 
     return (
+
+      {todayWeather ? (
+          <TodayWeather
+            list={todayWeather}
+            city={props.city}
+            weekday={daysArr[weekday]}
+          />
+        ) : null}
+
+        {dayOne ? (
+          <WeatherCard
+            list={dayOne}
+            city={props.city}
+            weekday={daysArr[weekday + 1]}
+          />
+        ) : null}
+
       <div>
         <Card className={classes.card}>
           <CardHeader

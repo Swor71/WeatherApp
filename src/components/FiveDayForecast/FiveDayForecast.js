@@ -1,11 +1,10 @@
 import React from "react";
-import "./TableWrapper.css";
+import "./FiveDayForecast.css";
 import _ from "lodash";
 
-import TodayWeather from "../TodayWeather/TodayWeather";
 import WeatherCard from "../WeatherCard/WeatherCard";
 
-const TableWrapper = props => {
+const FiveDayForecast = props => {
   let arrCpy = props.list.slice();
 
   const todayDate = new Date();
@@ -50,14 +49,6 @@ const TableWrapper = props => {
           : null
       }`}</h1>
       <div className="table-wrapper">
-        {/* {todayWeather ? (
-          <TodayWeather
-            list={todayWeather}
-            city={props.city}
-            weekday={daysArr[weekday]}
-          />
-        ) : null} */}
-
         {dayOne ? (
           <WeatherCard
             list={dayOne}
@@ -102,4 +93,4 @@ const TableWrapper = props => {
   );
 };
 
-export default TableWrapper;
+export default FiveDayForecast;
