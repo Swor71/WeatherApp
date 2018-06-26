@@ -5,14 +5,8 @@ import _ from "lodash";
 import WeatherCard from "../WeatherCard/WeatherCard";
 
 const FiveDayForecast = props => {
-  let arrCpy = props.list.slice();
+  const { otherDays, daysArr, weekday } = props;
 
-  const todayDate = new Date();
-  const todayDateShort = todayDate.toISOString().slice(0, 10);
-
-  let todayWeather = arrCpy.filter(item => item.dt_txt.match(todayDateShort));
-
-  let otherDays = arrCpy.filter(item => !item.dt_txt.match(todayDateShort));
   let otherDaysChunked = _.chunk(otherDays, 8);
 
   let dayOne = otherDaysChunked.shift();
@@ -20,24 +14,6 @@ const FiveDayForecast = props => {
   let dayThree = otherDaysChunked.shift();
   let dayFour = otherDaysChunked.shift();
   let dayFive = otherDaysChunked.shift();
-
-  //Additional days as a simple workaroud to the problem of starting on day 6
-  const daysArr = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday"
-  ];
-
-  const weekday = todayDate.getDay();
 
   return (
     <div className="container">

@@ -10,7 +10,7 @@ const DrawerMenu = props => {
     <div>
       <ul>
         <li>
-          <Link to="/">Today Weather</Link>
+          <Link to="/todayWeather">Today Weather</Link>
         </li>
         <li>
           <Link to="/fiveDayWeather">5-Day Weather Forecast</Link>
