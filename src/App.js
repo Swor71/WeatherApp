@@ -18,36 +18,28 @@ class App extends Component {
       search: "",
       city: [],
       list: [],
-      opened: false,
-      lat: null,
-      lon: null
+      opened: false
     };
   }
 
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition(position => {
-      this.setState({
-        lat: _.round(position.coords.latitude, 1),
-        lon: _.round(position.coords.longitude, 1)
-      });
+    navigator.geolocation.getCurrentPosition(async position => {
+      const lat = _.round(position.coords.latitude, 1);
+      const lon = _.round(position.coords.longitude, 1);
+
+      const APIKEY = `073cac7813564ec8027c23f467c3a8ac`;
+      const URL_GEO = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&APPID=${APIKEY}`;
+
+      try {
+        let resp = await axios.get(`${URL_GEO}`);
+        this.setState({
+          list: resp.data.list,
+          city: resp.data.city
+        });
+      } catch (error) {
+        console.error(error);
+      }
     });
-  }
-
-  async componentDidUpdate() {
-    const APIKEY = `073cac7813564ec8027c23f467c3a8ac`;
-    const URL_GEO = `http://api.openweathermap.org/data/2.5/forecast?lat=${
-      this.state.lat
-    }&lon=${this.state.lon}&units=metric&APPID=${APIKEY}`;
-
-    try {
-      let resp = await axios.get(`${URL_GEO}`);
-      this.setState({
-        list: resp.data.list,
-        city: resp.data.city
-      });
-    } catch (error) {
-      console.error(error);
-    }
   }
 
   async getData(e) {
