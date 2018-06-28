@@ -72,7 +72,7 @@ class App extends Component {
   };
 
   render() {
-    const { list } = this.state;
+    const { list, city, opened } = this.state;
 
     if (list) {
       let arrCpy = list.slice();
@@ -108,10 +108,7 @@ class App extends Component {
         <BrowserRouter>
           <div className="App">
             <AppBarTop toggleDrawer={this.toggleDrawer} />
-            <DrawerMenu
-              toggleDrawer={this.toggleDrawer}
-              opened={this.state.opened}
-            />
+            <DrawerMenu toggleDrawer={this.toggleDrawer} opened={opened} />
 
             <Route exact path="/" component={Welcome} />
             <Route
@@ -122,10 +119,10 @@ class App extends Component {
                     changeHandler={this.changeHandler}
                     onClickData={e => this.getData(e)}
                   />
-                  {this.state.list != "" && this.state.city != "" ? (
+                  {list != "" && city != "" ? (
                     <TodayWeather
-                      city={this.state.city}
-                      list={this.state.list}
+                      city={city}
+                      list={list}
                       todayWeather={todayWeather}
                       daysArr={daysArr}
                       weekday={weekday}
@@ -142,10 +139,10 @@ class App extends Component {
                     changeHandler={this.changeHandler}
                     onClickData={e => this.getData(e)}
                   />
-                  {this.state.list != "" && this.state.city != "" ? (
+                  {list != "" && city != "" ? (
                     <FiveDayForecast
-                      city={this.state.city}
-                      list={this.state.list}
+                      city={city}
+                      list={list}
                       otherDays={otherDays}
                       daysArr={daysArr}
                       weekday={weekday}

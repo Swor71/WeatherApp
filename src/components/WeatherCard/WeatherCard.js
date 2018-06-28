@@ -21,7 +21,7 @@ const styles = theme => ({
     margin: 5
   },
   media: {
-    height: 72,
+    height: 64,
     width: "auto",
     backgroundSize: "contain"
   },
@@ -48,9 +48,9 @@ class WeatherCard extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, list, weekday } = this.props;
 
-    let temp = this.props.list.map(item => {
+    let temp = list.map(item => {
       let tempsArr = [];
       tempsArr.push(item.main.temp);
       return tempsArr;
@@ -63,13 +63,13 @@ class WeatherCard extends React.Component {
       <div>
         <Card className={classes.card}>
           <CardHeader
-            title={`${this.props.weekday}`}
-            subheader={`${this.props.list[0].dt_txt.split(" ").shift()}`}
+            title={`${weekday}`}
+            subheader={`${list[0].dt_txt.split(" ").shift()}`}
           />
           <CardMedia
             className={classes.media}
             image={`http://openweathermap.org/img/w/${
-              this.props.list[0].weather[0].icon
+              list[0].weather[0].icon
             }.png`}
           />
           <CardContent>
@@ -79,11 +79,14 @@ class WeatherCard extends React.Component {
           </CardContent>
           <CardContent>
             <Typography align="center" variant="body2">{`Wind - ${
-              this.props.list[0].wind.speed
+              list[0].wind.speed
             } m/s`}</Typography>
             <Typography align="center" variant="body2">{`Pressure - ${
-              this.props.list[0].main.pressure
+              list[0].main.pressure
             } hPa`}</Typography>
+            {/* <Typography align="center" variant="body2">{`Rain - ${
+              list[0].rain.3h
+            } mm`}</Typography> */}
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
             <IconButton
@@ -102,7 +105,7 @@ class WeatherCard extends React.Component {
             <CardContent>
               <table className="table">
                 <tbody>
-                  {this.props.list.map((item, key) => (
+                  {list.map((item, key) => (
                     <tr key={key}>
                       <td>
                         {item.dt_txt

@@ -6,3 +6,10 @@
   justify-content: flex-start;
   align-items: center;
 }
+
+a,
+a:active,
+a:visited {
+  text-decoration: none;
+  color: #3f51b5;
+}

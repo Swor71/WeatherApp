@@ -5,7 +5,7 @@ import _ from "lodash";
 import WeatherCard from "../WeatherCard/WeatherCard";
 
 const FiveDayForecast = props => {
-  const { otherDays, daysArr, weekday } = props;
+  const { otherDays, daysArr, weekday, city } = props;
 
   let otherDaysChunked = _.chunk(otherDays, 8);
 
@@ -18,17 +18,15 @@ const FiveDayForecast = props => {
   return (
     <div className="container">
       <h1 className="place">{`${
-        props.city.name
-          ? `5-Day Weather Forecast for ${props.city.name}, ${
-              props.city.country
-            }:`
+        city.name
+          ? `5-Day Weather Forecast for ${city.name}, ${city.country}:`
           : null
       }`}</h1>
       <div className="table-wrapper">
         {dayOne ? (
           <WeatherCard
             list={dayOne}
-            city={props.city}
+            city={city}
             weekday={daysArr[weekday + 1]}
           />
         ) : null}
@@ -36,7 +34,7 @@ const FiveDayForecast = props => {
         {dayTwo ? (
           <WeatherCard
             list={dayTwo}
-            city={props.city}
+            city={city}
             weekday={daysArr[weekday + 2]}
           />
         ) : null}
@@ -44,7 +42,7 @@ const FiveDayForecast = props => {
         {dayThree ? (
           <WeatherCard
             list={dayThree}
-            city={props.city}
+            city={city}
             weekday={daysArr[weekday + 3]}
           />
         ) : null}
@@ -52,7 +50,7 @@ const FiveDayForecast = props => {
         {dayFour ? (
           <WeatherCard
             list={dayFour}
-            city={props.city}
+            city={city}
             weekday={daysArr[weekday + 4]}
           />
         ) : null}
@@ -60,7 +58,7 @@ const FiveDayForecast = props => {
         {dayFive ? (
           <WeatherCard
             list={dayFive}
-            city={props.city}
+            city={city}
             weekday={daysArr[weekday + 5]}
           />
         ) : null}
