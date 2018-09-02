@@ -10,6 +10,7 @@ import DrawerMenu from "./components/AppBarTop/DrawerMenu/DrawerMenu";
 import Welcome from "./components/Welcome/Welcome";
 import TodayWeather from "./components/TodayWeather/TodayWeather";
 import FiveDayForecast from "./components/FiveDayForecast/FiveDayForecast";
+import config from "./config";
 
 class App extends Component {
   constructor(props) {
@@ -27,8 +28,9 @@ class App extends Component {
       const lat = _.round(position.coords.latitude, 1);
       const lon = _.round(position.coords.longitude, 1);
 
-      const APIKEY = `073cac7813564ec8027c23f467c3a8ac`;
-      const URL_GEO = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&APPID=${APIKEY}`;
+      const URL_GEO = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&APPID=${
+        config.API_KEY
+      }`;
 
       try {
         let resp = await axios.get(`${URL_GEO}`);
@@ -46,8 +48,9 @@ class App extends Component {
     e.preventDefault();
     const search = this.state.search;
 
-    const APIKEY = `073cac7813564ec8027c23f467c3a8ac`;
-    const URL = `http://api.openweathermap.org/data/2.5/forecast?q=${search}&units=metric&APPID=${APIKEY}`;
+    const URL = `http://api.openweathermap.org/data/2.5/forecast?q=${search}&units=metric&APPID=${
+      config.API_KEY
+    }`;
 
     try {
       const resp = await axios.get(`${URL}`);
@@ -96,12 +99,7 @@ class App extends Component {
         "Wednesday",
         "Thursday",
         "Friday",
-        "Saturday",
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday"
+        "Saturday"
       ];
 
       return (

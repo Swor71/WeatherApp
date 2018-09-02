@@ -7,13 +7,7 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 const FiveDayForecast = props => {
   const { otherDays, daysArr, weekday, city } = props;
 
-  let otherDaysChunked = _.chunk(otherDays, 8);
-
-  let dayOne = otherDaysChunked.shift();
-  let dayTwo = otherDaysChunked.shift();
-  let dayThree = otherDaysChunked.shift();
-  let dayFour = otherDaysChunked.shift();
-  let dayFive = otherDaysChunked.shift();
+  let [dayOne, dayTwo, dayThree, dayFour, dayFive] = _.chunk(otherDays, 8);
 
   return (
     <div className="container">

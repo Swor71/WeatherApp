@@ -9,6 +9,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardMedia from "@material-ui/core/CardMedia";
 import Collapse from "@material-ui/core/Collapse";
 import IconButton from "@material-ui/core/IconButton";
+import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
@@ -32,16 +33,21 @@ const styles = theme => ({
     transform: "rotate(0deg)",
     transition: theme.transitions.create("transform", {
       duration: theme.transitions.duration.shortest
-    }),
-    marginLeft: "auto"
+    })
   },
   expandOpen: {
     transform: "rotate(180deg)"
+  },
+  button: {
+    margin: theme.spacing.unit,
+    marginLeft: "auto"
   }
 });
 
 class WeatherCard extends React.Component {
-  state = { expanded: false };
+  state = {
+    expanded: false
+  };
 
   handleExpandClick = () => {
     this.setState({ expanded: !this.state.expanded });
@@ -58,7 +64,7 @@ class WeatherCard extends React.Component {
 
     let minTemp = _.round(_.min(temp), 1);
     let maxTemp = _.round(_.max(temp), 1);
-
+    console.log("rerender", this.state.expanded);
     return (
       <div>
         <Card className={classes.card}>
@@ -89,17 +95,20 @@ class WeatherCard extends React.Component {
             } mm`}</Typography> */}
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
-            <IconButton
-              className={classnames(classes.expand, {
-                [classes.expandOpen]: this.state.expanded
-              })}
+            <Button
               onClick={this.handleExpandClick}
               aria-expanded={this.state.expanded}
-              aria-label="Show more"
+              // aria-label={`Show ${this.state.expanded ? "less" : "more"}`}
               color="primary"
+              className={classes.button}
             >
-              <ExpandMoreIcon />
-            </IconButton>
+              <ExpandMoreIcon
+                className={classnames(classes.expand, {
+                  [classes.expandOpen]: this.state.expanded
+                })}
+              />
+              <span>Show {this.state.expanded ? "less" : "more"}</span>
+            </Button>
           </CardActions>
           <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
             <CardContent>
