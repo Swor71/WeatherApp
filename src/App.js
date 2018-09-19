@@ -4,7 +4,6 @@ import "./App.css";
 import _ from "lodash";
 import { BrowserRouter, Route } from "react-router-dom";
 
-import Search from "./components/Search/Search";
 import AppBarTop from "./components/AppBarTop/AppBarTop";
 import DrawerMenu from "./components/AppBarTop/DrawerMenu/DrawerMenu";
 import Welcome from "./components/Welcome/Welcome";
@@ -46,7 +45,7 @@ class App extends Component {
 
   async getData(e) {
     e.preventDefault();
-    const search = this.state.search;
+    let search = this.state.search;
 
     const URL = `http://api.openweathermap.org/data/2.5/forecast?q=${search}&units=metric&APPID=${
       config.API_KEY
@@ -69,10 +68,10 @@ class App extends Component {
     });
   };
 
-  changeHandler = e => {
+  handleSearchChange(e) {
     const val = e.target.value;
     this.setState({ search: val });
-  };
+  }
 
   render() {
     const { list, city, opened } = this.state;
@@ -105,7 +104,11 @@ class App extends Component {
       return (
         <BrowserRouter>
           <div className="App">
-            <AppBarTop toggleDrawer={this.toggleDrawer} />
+            <AppBarTop
+              toggleDrawer={this.toggleDrawer}
+              onSearchChange={e => this.handleSearchChange(e)}
+              onGetData={e => this.getData(e)}
+            />
             <DrawerMenu toggleDrawer={this.toggleDrawer} opened={opened} />
 
             <Route exact path="/" component={Welcome} />
@@ -113,10 +116,6 @@ class App extends Component {
               path="/todayWeather"
               render={() => (
                 <div>
-                  <Search
-                    changeHandler={this.changeHandler}
-                    onClickData={e => this.getData(e)}
-                  />
                   {list != "" && city != "" ? (
                     <TodayWeather
                       city={city}
@@ -133,10 +132,6 @@ class App extends Component {
               path="/fiveDayWeather"
               render={() => (
                 <div>
-                  <Search
-                    changeHandler={this.changeHandler}
-                    onClickData={e => this.getData(e)}
-                  />
                   {list != "" && city != "" ? (
                     <FiveDayForecast
                       city={city}

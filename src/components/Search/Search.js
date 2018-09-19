@@ -22,19 +22,21 @@ const Search = props => {
   return (
     <form
       className={classes.container}
-      onSubmit={props.onClickData}
+      onSubmit={e => props.onGetData(e)}
       noValidate
       autoComplete="off"
     >
       <TextField
-        id="search"
+        id="outlined-search"
         label="Weather in..."
         type="search"
         className={classes.textField}
         margin="normal"
-        onChange={props.changeHandler}
+        variant="filled"
+        color="secondary"
+        onChange={e => props.onSearchChange(e)}
       />
-      <SearchButton onClickData={props.onClickData} />
+      <SearchButton />
     </form>
   );
 };
