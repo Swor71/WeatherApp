@@ -7,12 +7,16 @@ import SearchButton from "./SearchButton/SearchButton";
 
 const styles = theme => ({
   container: {
-    textAlign: "center"
+    textAlign: "center",
+    display: "flex",
+    alignItems: "center"
   },
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: 200
+    width: 200,
+    backgroundColor: "white",
+    borderRadius: "4px"
   }
 });
 

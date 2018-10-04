@@ -22,7 +22,7 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     navigator.geolocation.getCurrentPosition(async position => {
       const lat = _.round(position.coords.latitude, 1);
       const lon = _.round(position.coords.longitude, 1);
@@ -98,7 +98,12 @@ class App extends Component {
         "Wednesday",
         "Thursday",
         "Friday",
-        "Saturday"
+        "Saturday",
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday"
       ];
 
       return (
